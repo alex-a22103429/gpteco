@@ -58,10 +58,8 @@ context.subscriptions.push(
 	vscode.commands.registerCommand('chatgpt.documentation', () => commandHandler('promptPrefix.documentation')),
 	vscode.commands.registerCommand('chatgpt.resetConversation', () => provider.resetConversation()),
 	vscode.commands.registerCommand('chatgpt.addapmisrac', () => {
-		vscode.window.showInputBox({ prompt: 'Addapt to MISRA C rules' })
-			.then((value) => {
-				// Handle the logic for the 'addapmisrac' command here
-			});
+		const misraCValue = 'Addapt to MISRA C rules ';
+		provider.search(misraCValue);
 	})
 );
 
