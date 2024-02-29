@@ -2,7 +2,7 @@
   "name": "chatgpt-plus-misra-c",
   "displayName": "ChatGPT with misra-c rules",
   "description": "ChatGPT with misra-c rules",
-  "version": "1.0",
+  "version": "1.0.0",
   "publisher": "SANTOS",
   "icon": "resources/extensionIcon.png",
   "license": "MIT",
