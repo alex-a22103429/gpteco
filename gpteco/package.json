@@ -161,7 +161,7 @@
         {
           "type": "webview",
           "id": "chatgpt.chatView",
-          "name": "ChatGPT"
+          "name": "CHATGPT"
         }
       ]
     },
@@ -286,6 +286,7 @@
     "gpt3-tokenizer": "^1.1.5",
     "keyv": "^4.5.4",
     "node-fetch": "^3.3.0",
-    "package-name": "^0.1.0"
+    "package-name": "^0.1.0",
+    "tokenize-comment": "^3.0.1"
   }
 }

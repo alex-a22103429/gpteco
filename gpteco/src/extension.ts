@@ -2,6 +2,7 @@ import * as vscode from 'vscode';
 import { ChatGPTAPI } from 'chatgpt';
 
 
+
 type AuthInfo = {apiKey?: string};
 type Settings = {selectedInsideCodeblock?: boolean, codeblockWithLanguageId?: false, pasteOnClick?: boolean, keepConversation?: boolean, timeoutLength?: number, model?: string, apiUrl?: string};
 

@@ -2503,6 +2503,11 @@ slash@^3.0.0:
   resolved "https://registry.npmjs.org/slash/-/slash-3.0.0.tgz"
   integrity sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==
 
+snapdragon-lexer@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.npmjs.org/snapdragon-lexer/-/snapdragon-lexer-4.0.0.tgz"
+  integrity sha512-ddXT9cpKI0PUrs3xeoQVKEjequr0UyW9w281dzu8RTgWtqdIGZSvoWDsnIMPCc8Fupk4dByatSodhwYEGgrdSg==
+
 source-map-support@~0.5.20:
   version "0.5.21"
   resolved "https://registry.npmjs.org/source-map-support/-/source-map-support-0.5.21.tgz"
@@ -2709,6 +2714,13 @@ to-regex-range@^5.0.1:
   integrity sha512-65P7iz6X5yEr1cwcgvQxbbIw7Uk3gOy5dIdtZ4rDveLqhrdJP+Li/Hx6tyK0NEb+2GCyneCMJiGqrADCSNk8sQ==
   dependencies:
     is-number "^7.0.0"
+
+tokenize-comment@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.npmjs.org/tokenize-comment/-/tokenize-comment-3.0.1.tgz"
+  integrity sha512-of5j9zCooBZxcE1EQ9PCjXcuFUPU/h8GxhWqF86cQ3muHQQreIWgY40ZNfuPQUSXyTa6i7oAWqWX4QivzZh26Q==
+  dependencies:
+    snapdragon-lexer "^4.0.0"
 
 tough-cookie@~2.5.0:
   version "2.5.0"
