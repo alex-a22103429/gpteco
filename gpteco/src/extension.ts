@@ -45,20 +45,25 @@ export function activate(context: vscode.ExtensionContext) {
 		provider.search(prompt);
 	};
 
-	// Register the commands that can be called from the extension's package.json
-	context.subscriptions.push(
-		vscode.commands.registerCommand('chatgpt.ask', () => 
-			vscode.window.showInputBox({ prompt: 'What do you want to do?' })
+// Register the commands that can be called from the extension's package.json
+context.subscriptions.push(
+	vscode.commands.registerCommand('chatgpt.ask', () => 
+		vscode.window.showInputBox({ prompt: 'What do you want to do?' })
 			.then((value) => provider.search(value))
-		),
-		vscode.commands.registerCommand('chatgpt.explain', () => commandHandler('promptPrefix.explain')),
-		vscode.commands.registerCommand('chatgpt.refactor', () => commandHandler('promptPrefix.refactor')),
-		vscode.commands.registerCommand('chatgpt.optimize', () => commandHandler('promptPrefix.optimize')),
-		vscode.commands.registerCommand('chatgpt.findProblems', () => commandHandler('promptPrefix.findProblems')),
-		vscode.commands.registerCommand('chatgpt.documentation', () => commandHandler('promptPrefix.documentation')),
-		vscode.commands.registerCommand('chatgpt.resetConversation', () => provider.resetConversation())
-	);
-
+	),
+	vscode.commands.registerCommand('chatgpt.explain', () => commandHandler('promptPrefix.explain')),
+	vscode.commands.registerCommand('chatgpt.refactor', () => commandHandler('promptPrefix.refactor')),
+	vscode.commands.registerCommand('chatgpt.optimize', () => commandHandler('promptPrefix.optimize')),
+	vscode.commands.registerCommand('chatgpt.findProblems', () => commandHandler('promptPrefix.findProblems')),
+	vscode.commands.registerCommand('chatgpt.documentation', () => commandHandler('promptPrefix.documentation')),
+	vscode.commands.registerCommand('chatgpt.resetConversation', () => provider.resetConversation()),
+	vscode.commands.registerCommand('chatgpt.addapmisrac', () => {
+		vscode.window.showInputBox({ prompt: 'Addapt to MISRA C rules' })
+			.then((value) => {
+				// Handle the logic for the 'addapmisrac' command here
+			});
+	})
+);
 
 	// Change the extension's session token or settings when configuration is changed
 	vscode.workspace.onDidChangeConfiguration((event: vscode.ConfigurationChangeEvent) => {
