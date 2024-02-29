@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
 import { ChatGPTAPI } from 'chatgpt';
-
+import * as cp from 'child_process';
 
 
 type AuthInfo = {apiKey?: string};
@@ -61,6 +61,18 @@ context.subscriptions.push(
 	vscode.commands.registerCommand('chatgpt.addapmisrac', () => {
 		const misraCValue = 'Addapt to MISRA C rules ';
 		provider.search(misraCValue);
+
+		cp.exec(`python3 count_tokens.py "${misraCValue}"`, (error, stdout, stderr) => {
+			if (error) {
+				console.log(`Error: ${error.message}`);
+				return;
+			}
+			if (stderr) {
+				console.log(`stderr: ${stderr}`);
+				return;
+			}
+			console.log(`The provided code uses ${stdout.trim()} tokens.`);
+		});
 	})
 );
 
