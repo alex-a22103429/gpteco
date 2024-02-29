@@ -249,6 +249,12 @@
           "default": true,
           "description": "Append language id of the selected code to the codeblock (```language...code...```)",
           "order": 11
+        },
+        "chatgpt.temperature": {
+            "type": "number",
+            "default": 0.5,
+            "description": "The temperature value used by the GPT model (a higher value means more randomness)",
+            "order": 12
         }
       }
     }
