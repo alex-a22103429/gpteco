@@ -345,20 +345,21 @@ class ChatGPTViewProvider implements vscode.WebviewViewProvider {
 		const showdownUri = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'scripts', 'tailwind.min.js'));
 
 		return `<!DOCTYPE html>
-			<html lang="en">
-			<head>
-				<meta charset="UTF-8">
-				<meta name="viewport" content="width=device-width, initial-scale=1.0">
-				<script src="${tailwindUri}"></script>
-				<script src="${showdownUri}"></script>
-				<script src="${microlightUri}"></script>
-				<style>
+		<html lang="en">
+		<head>
+			<meta charset="UTF-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			<script src="${tailwindUri}"></script>
+			<script src="${showdownUri}"></script>
+			<script src="${microlightUri}"></script>
+			<style>
 				.code {
 					white-space: pre;
 				}
 				p {
 					padding-top: 0.3rem;
 					padding-bottom: 0.3rem;
+					color: #FFFF00;
 				}
 				/* overrides vscodes style reset, displays as if inside web browser */
 				ul, ol {
@@ -368,17 +369,56 @@ class ChatGPTViewProvider implements vscode.WebviewViewProvider {
 				h1, h2, h3, h4, h5, h6 {
 					font-weight: bold !important;
 				}
-				</style>
-			</head>
-			<body>
-				<input class="h-10 w-full text-white bg-stone-700 p-4 text-sm" placeholder="Ask ChatGPT something" id="prompt-input" />
-				
-				<div id="response" class="pt-4 text-sm">
-				</div>
-
-				<script src="${scriptUri}"></script>
-			</body>
-			</html>`;
+				/* Set a fixed height for the textarea and enable scrolling */
+				#prompt-input {
+					height: 200px; /* Adjust this value as needed */
+					width: 100%; /* Make it take full width */
+					resize: vertical; /* Allow vertical resizing */
+					overflow-y: auto; /* Enable vertical scrolling when content exceeds height */
+					padding: 0.5rem; /* Add some padding */
+					font-size: 1rem; /* Set font size */
+					line-height: 1.5; /* Set line height */
+					margin-bottom: 10px; /* Add margin for spacing */
+				}
+				/* Style for buttons */
+				.btn {
+					padding: 10px 20px;
+					background-color: #0b0142;
+					color: white;
+					border: none;
+					cursor: pointer;
+					border-radius: 5px;
+				}
+				.btn:hover {
+					background-color: #910404;
+				}
+			</style>
+		</head>
+		<body>
+			<textarea class="text-white bg-stone-700 p-4 text-sm" placeholder="Ask ChatGPT something" id="prompt-input"></textarea>
+			<button class="btn" onclick="sendMessage()">Send</button>
+			<button class="btn" onclick="clearInput()">Clear</button>
+			
+			<div id="response" class="pt-4 text-sm">
+			</div>
+		
+			<script src="${scriptUri}"></script>
+		
+			<script>
+				function sendMessage() {
+					var promptInput = document.getElementById('prompt-input').value;
+					// Here you can implement the logic to send the prompt
+					console.log("Sending prompt:", promptInput);
+					// For demonstration purposes, I'm just logging it to console
+				}
+		
+				function clearInput() {
+					document.getElementById('prompt-input').value = '';
+				}
+			</script>
+		</body>
+		</html>		
+		`;
 	}
 }
 
