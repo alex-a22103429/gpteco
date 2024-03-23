@@ -402,7 +402,10 @@ class ChatGPTViewProvider implements vscode.WebviewViewProvider {
 			</div>
 		
 			<script>
+			
+
 				function sendMessage() {
+					<script src="${scriptUri}"></script>
 					var promptInput = document.getElementById('prompt-input').value;
 					// Display the input text in the response div
 					var responseDiv = document.getElementById('response');
