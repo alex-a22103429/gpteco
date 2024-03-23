@@ -396,26 +396,27 @@ class ChatGPTViewProvider implements vscode.WebviewViewProvider {
 		</head>
 		<body>
 			<textarea class="text-white bg-stone-700 p-4 text-sm" placeholder="Ask ChatGPT something" id="prompt-input"></textarea>
-			<button class="btn" onclick="sendMessage()">Send</button>
-			<button class="btn" onclick="clearInput()">Clear</button>
-			
-			<div id="response" class="pt-4 text-sm">
-			</div>
-		
-			<script src="${scriptUri}"></script>
-		
-			<script>
-				function sendMessage() {
-					var promptInput = document.getElementById('prompt-input').value;
-					// Here you can implement the logic to send the prompt
-					console.log("Sending prompt:", promptInput);
-					// For demonstration purposes, I'm just logging it to console
-				}
-		
-				function clearInput() {
-					document.getElementById('prompt-input').value = '';
-				}
-			</script>
+<button class="btn" onclick="sendMessage()">Send</button>
+<button class="btn" onclick="clearInput()">Clear</button>
+
+<div id="response" class="pt-4 text-sm">
+</div>
+
+<script src="${scriptUri}"></script>
+
+<script>
+	function sendMessage() {
+		let promptInput = document.getElementById('prompt-input');
+		vscode.postMessage({
+			type: 'prompt',
+			value: promptInput.value
+		});
+	}
+
+	function clearInput() {
+		document.getElementById('prompt-input').value = '';
+	}
+</script>
 		</body>
 		</html>					
 		`;
