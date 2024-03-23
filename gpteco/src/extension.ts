@@ -388,6 +388,8 @@ class ChatGPTViewProvider implements vscode.WebviewViewProvider {
 					border: none;
 					cursor: pointer;
 					border-radius: 5px;
+					margin-right: 10px; /* Add right margin for horizontal spacing */
+					margin-bottom: 10px; /* Add bottom margin for vertical spacing */
 				}
 				.btn:hover {
 					background-color: #910404;
@@ -396,27 +398,34 @@ class ChatGPTViewProvider implements vscode.WebviewViewProvider {
 		</head>
 		<body>
 			<textarea class="text-white bg-stone-700 p-4 text-sm" placeholder="Ask ChatGPT something" id="prompt-input"></textarea>
-<button class="btn" onclick="sendMessage()">Send</button>
-<button class="btn" onclick="clearInput()">Clear</button>
-
-<div id="response" class="pt-4 text-sm">
-</div>
-
-<script src="${scriptUri}"></script>
-
-<script>
-	function sendMessage() {
-		let promptInput = document.getElementById('prompt-input');
-		vscode.postMessage({
-			type: 'prompt',
-			value: promptInput.value
-		});
-	}
-
-	function clearInput() {
-		document.getElementById('prompt-input').value = '';
-	}
-</script>
+			<button class="btn" onclick="sendMessage()">Send</button>
+			<button class="btn" onclick="clearInput()">Clear</button>
+		
+			<div id="response" class="pt-4 text-sm"></div>
+		
+			
+			<button class="btn" onclick="buttonClicked(1)">Explain me the code</button>
+			<button class="btn" onclick="buttonClicked(2)">Refactor</button>
+			<button class="btn" onclick="buttonClicked(3)">Find Problems</button>
+			<button class="btn" onclick="buttonClicked(4)">Addapt to MISRA-C rules</button>
+		
+			<script src="${scriptUri}"></script>
+		
+			<script>
+				function sendMessage() {
+					// Implement your send message functionality here
+				}
+		
+				function clearInput() {
+					document.getElementById('prompt-input').value = '';
+				}
+		
+				// Function to handle additional button clicks
+				function buttonClicked(buttonNumber) {
+					// Implement the behavior for each button here
+					alert("Button " + buttonNumber + " clicked!");
+				}
+			</script>
 		</body>
 		</html>					
 		`;
