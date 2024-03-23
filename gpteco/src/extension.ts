@@ -349,10 +349,9 @@ class ChatGPTViewProvider implements vscode.WebviewViewProvider {
 		<head>
 			<meta charset="UTF-8">
 			<meta name="viewport" content="width=device-width, initial-scale=1.0">
-			<script src="${tailwindUri}"></script>
-			<script src="${showdownUri}"></script>
-			<script src="${microlightUri}"></script>
+			<script src="https://cdn.tailwindcss.com"></script>
 			<style>
+				/* Your custom CSS styles */
 				.code {
 					white-space: pre;
 				}
@@ -402,22 +401,23 @@ class ChatGPTViewProvider implements vscode.WebviewViewProvider {
 			<div id="response" class="pt-4 text-sm">
 			</div>
 		
-			<script src="${scriptUri}"></script>
-		
 			<script>
 				function sendMessage() {
 					var promptInput = document.getElementById('prompt-input').value;
-					// Here you can implement the logic to send the prompt
-					console.log("Sending prompt:", promptInput);
-					// For demonstration purposes, I'm just logging it to console
+					// Display the input text in the response div
+					var responseDiv = document.getElementById('response');
+					responseDiv.innerText = promptInput;
+					// You can add logic here to send the prompt to a server or process it further
 				}
 		
 				function clearInput() {
 					document.getElementById('prompt-input').value = '';
+					// Clear the response div when clearing the input
+					document.getElementById('response').innerText = '';
 				}
 			</script>
 		</body>
-		</html>		
+		</html>				
 		`;
 	}
 }
